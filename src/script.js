@@ -1,4 +1,4 @@
-searchCity("Atlanta");
+searchCity("Austin");
 
 function displayWeatherCondition(response) {
   let temperatureElement = document.querySelector("#temperature");
@@ -6,12 +6,14 @@ function displayWeatherCondition(response) {
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
+  let iconElement = document.querySelector("#icon");
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  iconElement.setAttribute ("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
 let apiKey = "616cd13531829d29dc851eac29d80546";
