@@ -1,3 +1,5 @@
+searchCity("Atlanta");
+
 function displayWeatherCondition(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
