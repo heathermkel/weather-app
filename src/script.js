@@ -1,4 +1,5 @@
-searchCity("Austin");
+
+
 
 function displayWeatherCondition(response) {
   let temperatureElement = document.querySelector("#temperature");
@@ -23,7 +24,7 @@ axios.get(apiUrl).then(displayWeatherCondition);
 
 function searchCity(city) {
   let apiKey = "616cd13531829d29dc851eac29d80546";
-  let units = "imperial";
+  let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(displayWeatherCondition);
@@ -37,7 +38,7 @@ function handleSubmit(event) {
 
 function searchLocation(position) {
   let apiKey = "616cd13531829d29dc851eac29d80546";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayWeatherCondition);
 }
@@ -52,6 +53,17 @@ searchForm.addEventListener("submit", handleSubmit);
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (14 * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
 
 let now = new Date();
 let hours = now.getHours();
@@ -78,3 +90,5 @@ let days = [
 
 let currentTime = document.querySelector("#date-time");
 currentTime.innerHTML = `${days[dayList]} ${hours}:${minutes}`;
+
+searchCity("Austin");
