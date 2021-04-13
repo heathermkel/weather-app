@@ -89,3 +89,24 @@ table.table thead th {
   text-align: center;
   border-radius: 7px 7px 7px 7px;
 }
+
+.weather-forecast {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.weather-forecast-date {
+  font-size: 18px;
+}
+
+.weather-forecast-temp {
+  font-size: 16px;
+}
+
+.temp-max {
+  font-weight: 700;
+}
+
+.temp-min {
+  font-weight: 400;
+}
