@@ -91,7 +91,7 @@ table.table thead th {
 }
 
 .weather-forecast {
-  margin-top: 18px;
+  margin: 18px 18px 18px 18px;
   text-align: center;
 }
 

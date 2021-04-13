@@ -1,6 +1,4 @@
 
-
-
 function displayWeatherCondition(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -8,6 +6,8 @@ function displayWeatherCondition(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
+
+
 
   celsiusTemperature = response.data.main.temp;
 
@@ -18,6 +18,8 @@ function displayWeatherCondition(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
   iconElement.setAttribute ("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
+
+
 
 let apiKey = "616cd13531829d29dc851eac29d80546";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
@@ -80,6 +82,31 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 
+function displayForecast(){
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days =["Thurs", "Fri", "Sat", "Sun", "Mon"];
+
+  days.forEach(function (day) {
+  forecastHTML= forecastHTML + 
+          `
+            <div class="col-2">
+            <div class="weather-forecast-date">${day}</div>
+             <ing src = 
+             "http://openweathermap.org/img/wn/50d@2x.png" 
+             alt="" width="42"/>
+                            <div class="weather-forecast-temp">
+                                <span class="temp-max">18</span>
+                                <span class ="temp-min">12</span>
+                            </div>
+                        </div>
+                    `;});
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 
 
 let now = new Date();
@@ -109,3 +136,4 @@ let currentTime = document.querySelector("#date-time");
 currentTime.innerHTML = `${days[dayList]} ${hours}:${minutes}`;
 
 searchCity("Austin");
+displayForecast ();
