@@ -26,7 +26,7 @@ function displayWeatherCondition(response) {
 function getForecast(coordinates){
   let apiKey = "616cd13531829d29dc851eac29d80546";
   let apiUrl = 
-  `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid={API key}&units=metric`;
+  `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 
   
   axios.get(apiUrl).then(displayForecast);
@@ -35,7 +35,7 @@ function getForecast(coordinates){
 
 
   function formatDay(timestamp){
-  let date = new Date (imestamp * 1000);
+  let date = new Date (timestamp * 1000);
   let day = date.getDay();
   let days = [ "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 
@@ -57,17 +57,18 @@ function getForecast(coordinates){
   forecastHTML= forecastHTML + 
           `
             <div class="col-2">
-            <div class="weather-forecast-date">${forecastDay(formatDay.dt)}
+            <div class="weather-forecast-date">${formatDay(forecastDay.dt)}
             </div>
             <ing src = 
              "http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
              alt="" width="42"/>
                             <div class="weather-forecast-temp">
                                 <span class="temp-max"> ${Math.round(forecastDay.temp.max)}</span>
-                                <span class ="temp-min">${Math.rpund(forecastDay.temp.min)}</span>
+                                <span class ="temp-min">${Math.round(forecastDay.temp.min)}</span>
                             </div>
                         </div>
-                    `;}
+                    `;
+  }
                     
     });
 
@@ -75,11 +76,6 @@ function getForecast(coordinates){
   forecastElement.innerHTML = forecastHTML;
 }
 
-
-let apiKey = "616cd13531829d29dc851eac29d80546";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-
-axios.get(apiUrl).then(displayWeatherCondition);
 
 function searchCity(city) {
   let apiKey = "616cd13531829d29dc851eac29d80546";
