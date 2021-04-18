@@ -110,3 +110,8 @@ table.table thead th {
 .temp-min {
   font-weight: 400;
 }
+
+.built {
+  text-align: center;
+  font-size: 12px;
+}
